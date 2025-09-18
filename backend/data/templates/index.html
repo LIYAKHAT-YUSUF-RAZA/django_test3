@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>indexHTML</title>
+</head>
+
+<body>
+    <h1>index.html</h1>
+    {% for i in displayedData %}
+    <h2>Name: {{ i.category }}</h2>
+    <h2>Email: {{ i.item_name }}</h2>
+    <h2>Contact: {{ i.price}}</h2>
+    {% if i.image %}
+    <img src="{{ i.image.url }}" width="150px" alt="image">
+    {% else %}
+    No image uploaded
+    {% endif %}
+    {% endfor %}
+</body>
+
+</html>
