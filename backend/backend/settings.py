@@ -13,11 +13,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+import cloudinary_storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+""" MEDIA_ROOT = os.path.join(BASE_DIR, 'media') """
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,7 +50,12 @@ INSTALLED_APPS = [
     'data',
     'rest_framework',
     "corsheaders",
+    "cloudinary",
+    "cloudinary_storage",
 ]
+
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 
 #CORS_ALLOW_ALL_ORIGINS = True  # (or set specific React URL)
 CORS_ALLOWED_ORIGINS = [
@@ -136,3 +146,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+""" CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dh5rvmbuk',
+    'API_KEY': '329886979111668',
+    'API_SECRET': 'enZlRzk-lKVvMHKhNjocYjyHZvQ',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage' """
+
+
+cloudinary.config(
+    cloud_name = 'dh5rvmbuk',
+    api_key = '329886979111668',
+    api_secret = 'enZlRzk-lKVvMHKhNjocYjyHZvQ'
+)
